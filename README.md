@@ -1,24 +1,26 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Travel Share
+​
+## サイト概要
+### サイトテーマ
+旅行した場所、観光した場所をユーザー同士で共有できるコミュニティサイト
+​
+### テーマを選んだ理由
+背景として最近旅行に対して興味を持つことが増え始めたのがきっかけです。私は観光客が減少しているのが課題と感じました。そこで課題を解消するために観光客が共有することができるサイトをつくれば課題を解消することに繋がるのではと思いました。
+​
+### ターゲットユーザ
+- 旅行したいけど、どんな観光地か気になる人
+- 旅行者同士で繋がりたい人
+​
+### 主な利用シーン
+- 観光地が実際どういう所か調べたい時
+- 旅行者同士で旅先の情報を共有したい時
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
