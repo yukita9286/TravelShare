@@ -11,4 +11,12 @@
   <p>投稿ユーザー画像：<%= image_tag @post_image.customer.get_profile_image(100,100) %></p>
   <p>ユーザーネーム：<%= @post_image.customer.name %></p>
   <p>投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+  <p>コメント数： <%= @post_image.post_comments.count %></p>
+  <div class=<%= "favorite-" + @post_image.id.to_s %> >
+  <p><%= render "public/favorites/btn", post_image: @post_image %></p>
+  </div>
+  
+  <%= render "public/post_comments/index", post_image: @post_image %>
+  <%= render "public/post_comments/form", post_image: @post_image, post_comment: @post_comment %>
+      
 </div>

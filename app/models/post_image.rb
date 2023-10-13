@@ -1,6 +1,9 @@
 class PostImage < ApplicationRecord
   
   belongs_to :customer
+  has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  
   has_one_attached :image
     
    def get_image
@@ -10,4 +13,12 @@ class PostImage < ApplicationRecord
      end
      image
    end
+   
+   
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
+  
+  
+  
 end

@@ -16,20 +16,34 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
-  
+
   # 会員
   scope module: :public do
+    
   get 'customers/confirm' => "customers#confirm"
   patch 'costomers/out' => "customers#out"
-  resources :customers, only: [:show, :edit, :update]
-  resources :post_images, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-
+  resources :customers, only: [:show, :edit, :update] do
+    
+    resource :relationships, only: [:create, :destroy]
+  	get "followings" => "relationships#followings", as: "followings"
+  	get "followers" => "relationships#followers", as: "followers"
+  	
   end
-  
+  	
+  resources :post_images, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    
+    resource :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
+    
+  end
+    
+  end
+
   #管理者
   namespace :admin do
-  resources :customers, only: [:index, :show]
     
+  resources :customers, only: [:index, :show]
+
   end
 
 end

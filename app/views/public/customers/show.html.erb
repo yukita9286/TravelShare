@@ -6,7 +6,23 @@
     <p><%= link_to "プロフィール編集", edit_customer_path %></p>
      <%= link_to "退会する", customers_confirm_path %>
   <% end %>  
+  <tr>
+    <th>フォロー</th>
+    <th><%= link_to @customer.followings.count, customer_followings_path(@customer) %></th>
+  </tr>
+  <tr>
+    <th>フォロワー</th>
+    <th><%= link_to @customer.followers.count, customer_followers_path(@customer) %></th>
+  </tr>
 </div>
+
+<div class="row">
+  <% if current_customer != @customer %>
+    <td><%= render "relationships/btn", customer: @customer, options: { class: ""} %></td>
+  <% end %>
+</div>
+
+
 
 <!-- ユーザーの投稿一覧 -->
 
@@ -15,9 +31,7 @@
   <%= link_to post_image_path(post_image.id) do %>
     <%= image_tag post_image.get_image %>
   <% end %>
-  <p>投稿ユーザー画像：<%= image_tag post_image.customer.get_profile_image(100,100) %></p>
   <p>タイトル：<%= post_image.title %></p>
   <p>内容：<%= post_image.title %></p>
-  <p>ユーザーネーム：<%= post_image.customer.name %></p>
 </div>
 <% end %>
