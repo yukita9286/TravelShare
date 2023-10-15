@@ -1,22 +1,20 @@
 <!-- ユーザーの詳細 -->
+
 <div>
   <h3><%= @customer.name %></h3>
   <%= image_tag @customer.get_profile_image(100,100) %>
-  <% if @customer == current_customer %>
     <p><%= link_to "プロフィール編集", edit_customer_path %></p>
-  <% end %>  
+  <%= link_to "アカウントを停止する(強制退会)", admin_customers_out_path, method: :patch, :class => "btn btn-danger ml-5", data: { confirm: "本当にアカウントを停止しますか？" }  %>
 </div>
 
 <!-- ユーザーの投稿一覧 -->
 
 <% @post_images.each do |post_image| %>
 <div>
-  <%= link_to post_image_path(post_image.id) do %>
+  <%= link_to admin_post_image_path(post_image.id) do %>
     <%= image_tag post_image.get_image %>
   <% end %>
-  <p>投稿ユーザー画像：<%= image_tag post_image.customer.get_profile_image(100,100) %></p>
   <p>タイトル：<%= post_image.title %></p>
   <p>内容：<%= post_image.title %></p>
-  <p>ユーザーネーム：<%= post_image.customer.name %></p>
 </div>
 <% end %>

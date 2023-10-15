@@ -5,7 +5,7 @@
   <% if @customer == current_customer %>
     <p><%= link_to "プロフィール編集", edit_customer_path %></p>
      <%= link_to "退会する", customers_confirm_path %>
-  <% end %>  
+  <% end %>
   <tr>
     <th>フォロー</th>
     <th><%= link_to @customer.followings.count, customer_followings_path(@customer) %></th>
@@ -18,7 +18,7 @@
 
 <div class="row">
   <% if current_customer != @customer %>
-    <td><%= render "relationships/btn", customer: @customer, options: { class: ""} %></td>
+    <td><%= render "public/relationships/btn", customer: @customer %></td>
   <% end %>
 </div>
 
@@ -32,6 +32,6 @@
     <%= image_tag post_image.get_image %>
   <% end %>
   <p>タイトル：<%= post_image.title %></p>
-  <p>内容：<%= post_image.title %></p>
+  <p>内容：<%= post_image.body %></p>
 </div>
 <% end %>

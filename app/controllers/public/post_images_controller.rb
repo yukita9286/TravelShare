@@ -17,6 +17,7 @@ class Public::PostImagesController < ApplicationController
 
   def index
     @post_image = PostImage.new
+    
     @post_images = PostImage.all
   end
 

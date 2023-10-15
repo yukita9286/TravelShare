@@ -18,7 +18,7 @@
      
     <div><td><%= image_tag customer.get_profile_image(100,100) %></td></div>
       <td><%= customer.name %></td>
-      <td><%= link_to 'Show', customer_path(customer.id) %></td>
+      <td><%= link_to 'Show', admin_customer_path(customer.id) %></td>
 
     </tr>
     

@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  
   def show
     @customer = Customer.find(params[:id])
     @post_images = @customer.post_images
@@ -23,6 +24,11 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
+  end
+  
+  def liked_posts
+    @post_image = PostImage.new
+    @liked_posts = PostImage.liked_posts(current_customer, params[:page], 12)
   end
 
 
