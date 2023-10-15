@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
   
   def show
     @customer = Customer.find(params[:id])
-    @post_images = @customer.post_images
+    @post_images = @customer.post_images.page(params[:page])
   end
 
   def edit
@@ -28,7 +28,7 @@ class Public::CustomersController < ApplicationController
   
   def liked_posts
     @post_image = PostImage.new
-    @liked_posts = PostImage.liked_posts(current_customer, params[:page], 12)
+    @liked_posts = PostImage.liked_posts(current_customer, params[:page], 8)
   end
 
 

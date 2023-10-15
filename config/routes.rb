@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 # URL /customers/sign_in ...
 devise_for :customers, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: 'public/sessions',
+  passwords: 'public/passwords'
 }
 
 # 管理者用
@@ -16,6 +17,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
+
+  # ゲスト
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
 
   # 会員
   scope module: :public do
@@ -43,6 +50,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   end
+
+
 
   #管理者
   namespace :admin do

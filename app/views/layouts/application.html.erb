@@ -13,6 +13,10 @@
 
   <body>
       <header>
+        
+        
+        
+    <!--アドミンのヘッダー-->
     <% if admin_signed_in? %>
       <li>
         <%= link_to '投稿一覧', admin_post_images_path %>
@@ -26,7 +30,8 @@
           <i class="fas fa-sign-out-alt mr-2">ログアウト</i>
         <% end %>
       </li>
-
+      
+    <!--ユーザーのヘッダー-->
     <% elsif customer_signed_in? %>
     
       <li>
@@ -44,14 +49,20 @@
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
+      
     <% else %>
+    <!--非ログイン時-->
       <li>
         <%= link_to "新規登録", new_customer_registration_path %>
       </li>
       <li>
         <%= link_to "ログイン", new_customer_session_path %>
       </li>
+      <li>
+        <%= link_to "ゲストログイン", customers_guest_sign_in_path, method: :post %>
+      </li>
     <% end %>
+    
   </header>
     <%= yield %>
   </body>
