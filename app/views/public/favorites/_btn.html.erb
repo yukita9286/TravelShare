@@ -1,3 +1,20 @@
+<!--ゲスト-->
+<% if current_customer.guest_customer? %>
+
+
+  <% if post_image.favorited_by?(current_customer) %>
+  
+    <p>♥<%= post_image.favorites.count %> いいね</p>
+    
+  <% else %>
+  
+    <p>♡<%= post_image.favorites.count %> いいね</p>
+    
+  <% end %>
+  
+<% else %>
+
+<!--通常のユーザー-->
  <% if post_image.favorited_by?(current_customer) %>
     <p>
       <%= link_to post_image_favorites_path(post_image), method: :delete, remote: true do %>
@@ -11,3 +28,5 @@
       <% end %>
     </p>
   <% end %>
+  
+<% end %>

@@ -26,7 +26,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   # 会員
   scope module: :public do
-
+    
+  get '/search', to: 'searchs#search'
   get 'customers/confirm' => "customers#confirm"
   patch 'customers/out' => "customers#out"
   resources :customers, only: [:index, :show, :edit, :update] do

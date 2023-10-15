@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+   # ゲストを制限
+  before_action :ensure_guest_customer, only: [:edit, :update, :confirm, :out, :liked_posts]
   
   def show
     @customer = Customer.find(params[:id])
@@ -33,6 +35,12 @@ class Public::CustomersController < ApplicationController
 
 
   private
+  
+  def ensure_guest_customer
+   if current_customer.guest_customer?
+     redirect_to customer_path(current_customer), notice: "ゲストユーザーはプロフィール編集できません。"
+   end
+  end
 
   def customer_params
     params.require(:customer).permit(:name, :profile_image)

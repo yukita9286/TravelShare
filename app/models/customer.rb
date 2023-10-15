@@ -19,6 +19,8 @@ class Customer < ApplicationRecord
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
   
+  GUEST_CUSTOMER_EMAIL = "guest@example.com"
+  
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
@@ -26,6 +28,11 @@ class Customer < ApplicationRecord
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
       # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
     end
+  end
+  
+  
+  def guest_customer?
+    email == GUEST_CUSTOMER_EMAIL
   end
 
   

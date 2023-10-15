@@ -2,7 +2,13 @@
 <div>
   <h3><%= @customer.name %></h3>
   <%= image_tag @customer.get_profile_image(100,100) %>
-  <% if @customer == current_customer %>
+  <%# if @customer == current_customer %>
+  
+  <!--ゲストに閲覧制限-->
+  <% if current_customer.guest_customer? %>
+  <% else %>
+  
+
     <p><%= link_to "プロフィール編集", edit_customer_path %></p>
      <%= link_to "退会する", customers_confirm_path %>
   

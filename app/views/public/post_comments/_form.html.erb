@@ -1,4 +1,11 @@
+<!--ゲスト-->
+<% if current_customer.guest_customer? %>
+<% else %>
+
+<!--通常のユーザー-->
 <%= form_with model: [post_image, post_comment] do |f| %>
   <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "w-50" %>
   <%= f.submit "送信" %>
+<% end %>
+
 <% end %>
