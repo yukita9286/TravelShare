@@ -1,47 +1,69 @@
+<!--中央よせ-->
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+
+
 <!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @customer.name %></h3>
-  <%= image_tag @customer.get_profile_image(100,100) %>
-  <%# if @customer == current_customer %>
-  
-  <!--ゲストに閲覧制限-->
-  <% if current_customer.guest_customer? %>
-  <% else %>
-  
 
-    <p><%= link_to "プロフィール編集", edit_customer_path %></p>
-     <%= link_to "退会する", customers_confirm_path %>
-  
+  <table class='table'>
+    
+  <thead>
   <tr>
-    <th>フォロー</th>
-    <th><%= link_to @customer.followings.count, customer_followings_path(@customer) %></th>
+    <th style="width: 200px;">
+      <%= image_tag @customer.get_profile_image(100,100) %>
+    <h4>ユーザー名</h4>
+    <p><%= @customer.name %></p>
+
+    
+    </th>
+    
+    <th>
+    <p>フォロー　<%= link_to @customer.followings.count, customer_followings_path(@customer) %></p>
+    <p>フォロワー　<%= link_to @customer.followers.count, customer_followers_path(@customer) %></p>
+    </th>
   </tr>
-  <tr>
-    <th>フォロワー</th>
-    <th><%= link_to @customer.followers.count, customer_followers_path(@customer) %></th>
-  </tr>
-</div>
+  </thead>
+  
+
+    <%= link_to "プロフィール編集", edit_customer_path, class: "btn btn-outline-secondary btn-block" %>
+    <%= link_to "退会する", customers_confirm_path %>
 
   
-<div class="row">
-  <% if current_customer != @customer %>
-    <td><%= render "public/relationships/btn", customer: @customer %></td>
-  <% end %>
+   </table>
+  
+
+    <%# if @customer == current_customer %>
+  
+    <!--ゲストに閲覧制限-->
+    <% if current_customer.guest_customer? %>
+    <% else %>
+
+
+    <div class="row">
+      <% if current_customer != @customer %>
+        <td><%= render "public/relationships/btn", customer: @customer %></td>
+      <% end %>
+    </div>
+      <% end %>
+
+
+    <!-- ユーザーの投稿一覧 -->
+
+    <% @post_images.each do |post_image| %>
+    <div>
+      <%= link_to post_image_path(post_image.id) do %>
+        <%= image_tag post_image.get_image %>
+      <% end %>
+      <p>タイトル：<%= post_image.title %></p>
+      <p>内容：<%= post_image.body %></p>
+    </div>
+    <% end %>
+         <div class="d-flex justify-content-center">
+            <%= paginate @post_images %>
+         </div>
+
+
+    </div>
+  </div>
 </div>
-  <% end %>
-
-
-<!-- ユーザーの投稿一覧 -->
-
-<% @post_images.each do |post_image| %>
-<div>
-  <%= link_to post_image_path(post_image.id) do %>
-    <%= image_tag post_image.get_image %>
-  <% end %>
-  <p>タイトル：<%= post_image.title %></p>
-  <p>内容：<%= post_image.body %></p>
-</div>
-<% end %>
-     <div class="d-flex justify-content-center">
-        <%= paginate @post_images %>
-     </div>
