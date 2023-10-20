@@ -12,41 +12,51 @@
   </head>
 
   <body>
-      <header>
-        
-        
-        
+      <header >
+
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="navbar-brand" href="/">
+             <span class="logo_text ml-3">Travel Share</span>
+         </a>
+         <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+
     <!--アドミンのヘッダー-->
     <% if admin_signed_in? %>
+     <div class="row">
       <li>
         <%= link_to '投稿一覧', admin_post_images_path %>
       </li>
       <li>
         <%= link_to 'ユーザー一覧', admin_customers_path %>
       </li>
-            
-      <li class="nav-item">
+      <li>
         <%= link_to destroy_admin_session_path, method: :delete do %>
           <i class="fas fa-sign-out-alt mr-2">ログアウト</i>
         <% end %>
       </li>
-      
+     </div>
     <!--ユーザーのヘッダー-->
     <% elsif customer_signed_in? %>
-    
+
     <!--ゲストユーザーのヘッダー-->
       <% if current_customer.guest_customer? %>
-
-      <li>
+      
+      <div class="row">
+        
+      <li class="nav-item">
         <%= link_to '投稿一覧', post_images_path %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to 'マイページ', customer_path(current_customer.id) %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
       
+      </div>
+      
+
       <% else %>
       <!--通常のユーザーのヘッダー-->
       <li>
@@ -64,10 +74,21 @@
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
-      <% end %>
-
-       <%= render 'public/searchs/form' %>
       
+      
+      
+      <% end %>
+      
+
+
+       <div>
+       <%= render 'public/searchs/form' %>
+       </div>
+
+      
+       
+       
+
     <% else %>
     <!--非ログイン時-->
       <li>
@@ -80,7 +101,11 @@
         <%= link_to "ゲストログイン", customers_guest_sign_in_path, method: :post %>
       </li>
     <% end %>
-    
+
+     </ul>
+    </div>
+  </nav>
+
   </header>
     <%= yield %>
   </body>

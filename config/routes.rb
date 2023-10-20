@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'homes/about'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # 顧客用
 # URL /customers/sign_in ...
@@ -16,7 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   root to: 'homes#top'
-  get 'homes/about' => 'homes#about'
+  
 
   # ゲスト
   devise_scope :customer do
@@ -27,6 +30,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # 会員
   scope module: :public do
     
+  get 'homes/about' => 'homes#about'
   get '/search', to: 'searchs#search'
   get 'customers/confirm' => "customers#confirm"
   patch 'customers/out' => "customers#out"

@@ -1,2 +1,37 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+
+
+
+      <h1><strong>　Travel Shareへようこそ</strong>  !!</h1>
+
+      <p>　　　Travel Shareでは、観光地が実際どういう所か調べたい時や</p>
+      <p> 　　　　旅行者同士で旅先の情報を共有したい時に役立ちます</p>
+
+
+
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to "まずはゲストでログインしてみる", customers_guest_sign_in_path, method: :post, class: "text-center d-block mx-auto" %>
+        </div>
+
+
+
+         <p style="text-align: center">新規登録とログインはこちらから</p>
+
+        <div class="row">
+          <%= link_to '新規登録',new_customer_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to 'ログイン',new_customer_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
