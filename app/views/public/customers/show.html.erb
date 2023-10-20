@@ -3,67 +3,59 @@
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
+      <!-- ユーザーの詳細 -->
+      <table class='table border rounded m-5', style="text-align: center">
+        <tr>
+          <th style="width: 150px;">
+            <%= image_tag @customer.get_profile_image(100, 100) %>
+            <h4>ユーザー名</h4>
+            <p><%= @customer.name %></p>
+          </th>
+          <th style="width: 150px;">
+            <div class="mt-3"> <!-- フォローとフォロワーを水平に配置 -->
+              <p>フォロー <%= link_to @customer.followings.count, customer_followings_path(@customer) %></p>
+              <p>フォロワー <%= link_to @customer.followers.count, customer_followers_path(@customer) %></p>
+            </div>
+          </th>
+        </tr>
+      </table>
 
-<!-- ユーザーの詳細 -->
+      <div style="text-align: center">
+        <%= link_to "プロフィール編集", edit_customer_path, class: "btn btn-outline-secondary" %>
+      </div>
+      
+      <div style="text-align: center", class="mt-3">
+        <%= link_to "　　退会する　　", customers_confirm_path, class: "btn btn-sm btn-danger" %>
+      </div>
 
-  <table class='table'>
-    
-  <thead>
-  <tr>
-    <th style="width: 200px;">
-      <%= image_tag @customer.get_profile_image(100,100) %>
-    <h4>ユーザー名</h4>
-    <p><%= @customer.name %></p>
-
-    
-    </th>
-    
-    <th>
-    <p>フォロー　<%= link_to @customer.followings.count, customer_followings_path(@customer) %></p>
-    <p>フォロワー　<%= link_to @customer.followers.count, customer_followers_path(@customer) %></p>
-    </th>
-  </tr>
-  </thead>
-  
-
-    <%= link_to "プロフィール編集", edit_customer_path, class: "btn btn-outline-secondary btn-block" %>
-    <%= link_to "退会する", customers_confirm_path %>
-
-  
-   </table>
-  
-
-    <%# if @customer == current_customer %>
-  
-    <!--ゲストに閲覧制限-->
-    <% if current_customer.guest_customer? %>
-    <% else %>
-
-
-    <div class="row">
-      <% if current_customer != @customer %>
-        <td><%= render "public/relationships/btn", customer: @customer %></td>
+      <!-- ゲストに閲覧制限 -->
+      <% if current_customer.guest_customer? %>
+      <% else %>
+        <div class="row">
+          <% if current_customer != @customer %>
+            <td><%= render "public/relationships/btn", customer: @customer %></td>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-      <% end %>
+      
+      
+          <!-- ユーザーの投稿一覧 -->
+        <h2 style="margin-top: 50px; text-align: center">過去の投稿</h2>
+    
+        <% @post_images.each do |post_image| %>
+        <div>
+          <%= link_to post_image_path(post_image.id) do %>
+            <%= image_tag post_image.get_image %>
+          <% end %>
+          <p>タイトル：<%= post_image.title %></p>
+          <p>内容：<%= post_image.body %></p>
+        </div>
+        <% end %>
+             <div class="d-flex justify-content-center">
+                <%= paginate @post_images %>
+             </div>
 
-
-    <!-- ユーザーの投稿一覧 -->
-
-    <% @post_images.each do |post_image| %>
-    <div>
-      <%= link_to post_image_path(post_image.id) do %>
-        <%= image_tag post_image.get_image %>
-      <% end %>
-      <p>タイトル：<%= post_image.title %></p>
-      <p>内容：<%= post_image.body %></p>
-    </div>
-    <% end %>
-         <div class="d-flex justify-content-center">
-            <%= paginate @post_images %>
-         </div>
-
-
+      
     </div>
   </div>
 </div>
