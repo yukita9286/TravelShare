@@ -1,25 +1,35 @@
-
+<h2 class="mt-5", style="text-align: center">コメント</h2>
 <table>
-  <tbody>
+  <thead>
     <% post_image.post_comments.each do |post_comment| %>
     <tr>
-      <td>
+      <th style="width: 150px; padding: 10px;">
         <%= link_to customer_path(post_comment.customer) do %>
           <%= image_tag post_comment.customer.get_profile_image(100,100) %><br>
           <%= post_comment.customer.name %>
         <% end %>
-      </td>
-      <td><%= post_comment.comment %></td>
-      <td>
+
+      </th>
+      <th class="border border-dark", style="background-color: white; width: 350px;">
+        <div style="max-height: 100px; overflow-y: auto;"> <!-- コメント枠の高さを制御 -->
+          <%= post_comment.comment %>
+        </div>
+      </th>
+      
+      <th>
+        
         <% if post_comment.customer == current_customer %>
-          <%= link_to "削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+          <%= link_to "コメントを削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
         <% end %>
         
         <% if admin_signed_in? %>
-          <%= link_to "削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+          <%= link_to "コメントを削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
         <% end %>
-      </td>
+        
+      </th>
+
     </tr>
     <% end %>
-  </tbody>
+    </thead>
+
 </table>

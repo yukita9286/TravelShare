@@ -40,12 +40,12 @@
       
       
           <!-- ユーザーの投稿一覧 -->
-        <h2 style="margin-top: 50px; text-align: center">過去の投稿</h2>
+        <h2 style="margin-top: 50px; text-align: center">ユーザーの投稿</h2>
     
         <% @post_images.each do |post_image| %>
-        <div>
+        <div class="border rounded p-5 m-5", style="text-align: center; background-color: #a0d8ef;">
           <%= link_to post_image_path(post_image.id) do %>
-            <%= image_tag post_image.get_image %>
+            <%= image_tag post_image.get_image , style: 'max-width: 300px; max-height:200px;' %>
           <% end %>
           <p>タイトル：<%= post_image.title %></p>
           <p>内容：<%= post_image.body %></p>
