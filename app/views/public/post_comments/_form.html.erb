@@ -5,7 +5,7 @@
     <!--通常のユーザー-->
     <div class="mt-5">
     <%= form_with model: [post_image, post_comment] do |f| %>
-      <%= f.text_area :comment, rows:'3', placeholder: "コメントする", class: "w-50" %>
+      <%= f.text_area :comment, rows:'5', placeholder: "コメントする", class: "w-50" %>
       <%= f.submit "送信" %>
     <% end %>
     </div>
