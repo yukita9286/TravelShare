@@ -4,6 +4,8 @@
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
       <!-- ユーザーの詳細 -->
+      <!-- ゲストに閲覧制限 -->
+            <% if current_customer.guest_customer? %>
       <table class='table border rounded m-5', style="text-align: center">
         <tr>
           <th style="width: 150px;">
@@ -12,13 +14,22 @@
             <p><%= @customer.name %></p>
           </th>
           <th style="width: 150px;">
+            <% else %>
             <div class="mt-3"> <!-- フォローとフォロワーを水平に配置 -->
-              <p>フォロー <%= link_to @customer.followings.count, customer_followings_path(@customer) %></p>
-              <p>フォロワー <%= link_to @customer.followers.count, customer_followers_path(@customer) %></p>
+                        <p>フォロー <%= link_to @customer.followings.count, customer_followings_path(@customer) %></p>
+                        <p>フォロワー <%= link_to @customer.followers.count, customer_followers_path(@customer) %></p>
+                      <% if current_customer != @customer %>
+                        <p><%= render "public/relationships/btn", customer: @customer %></p>
+                      <% end %>
+                      
+            <% end %>
             </div>
           </th>
         </tr>
       </table>
+      
+      <% if current_customer.guest_customer? %>
+      <% else %>
 
       <div style="text-align: center">
         <%= link_to "プロフィール編集", edit_customer_path, class: "btn btn-outline-secondary" %>
@@ -27,17 +38,8 @@
       <div style="text-align: center", class="mt-3">
         <%= link_to "　　退会する　　", customers_confirm_path, class: "btn btn-sm btn-danger" %>
       </div>
-
-      <!-- ゲストに閲覧制限 -->
-      <% if current_customer.guest_customer? %>
-      <% else %>
-        <div class="row">
-          <% if current_customer != @customer %>
-            <td><%= render "public/relationships/btn", customer: @customer %></td>
-          <% end %>
-        </div>
-      <% end %>
       
+      <% end %>
       
           <!-- ユーザーの投稿一覧 -->
         <h2 style="margin-top: 50px; text-align: center">ユーザーの投稿</h2>

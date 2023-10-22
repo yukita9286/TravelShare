@@ -30,7 +30,7 @@ class Public::CustomersController < ApplicationController
   
   def liked_posts
     @post_image = PostImage.new
-    @liked_posts = PostImage.liked_posts(current_customer, params[:page], 8)
+    @liked_posts = PostImage.liked_posts(current_customer, params[:page], 5)
   end
 
 

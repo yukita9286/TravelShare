@@ -1,13 +1,23 @@
-<% post_images.each do |post_image| %>
-<div>
-  <%= link_to post_image_path(post_image.id) do %>
-    <%= image_tag post_image.get_image %>
-  <% end %>
-  <p>タイトル：<%= post_image.title %></p>
-  <p>内容：<%= post_image.body %></p>
-  <p>コメント数： <%= post_image.post_comments.count %></p>
-  <div class=<%= "favorite-" + post_image.id.to_s %> >
-  <p><%= render "public/favorites/btn", post_image: post_image %></p>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+
+      <% post_images.each do |post_image| %>
+      <div class="border rounded p-5 m-5", style="background-color: #a0d8ef;">
+        <%= link_to post_image_path(post_image.id) do %>
+          <%= image_tag post_image.get_image %>
+        <% end %>
+        <p>タイトル：<%= post_image.title %></p>
+        <p>内容：<%= post_image.body %></p>
+        <p>コメント数： <%= post_image.post_comments.count %></p>
+        <div class=<%= "favorite-" + post_image.id.to_s %> >
+        <p><%= render "public/favorites/btn", post_image: post_image %></p>
+        </div>
+      </div>
+      <% end %>
+
+
+
+    </div>
   </div>
 </div>
-<% end %>
