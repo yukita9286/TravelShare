@@ -17,9 +17,12 @@
         </td>
         
         <td><%= customer.name %></td>
-
+        <!--ゲストユーザーのヘッダー-->
+        <% if current_customer.guest_customer? %>
+        <% else %>
         <td><%= render "public/relationships/btn", customer: customer %></td>
-        <td><%#= link_to 'Show', user, class: "customer_#{customer.id}" %></td>
+        <% end %>
+        
       </tr>
     <% end %>
   </tbody>
