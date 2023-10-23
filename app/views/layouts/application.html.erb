@@ -23,13 +23,13 @@
          <div class="row">
 
           <li>
-            <%= link_to '投稿一覧', admin_post_images_path %>
+            <%= link_to '投稿一覧', admin_post_images_path, class: "btn"  %>
           </li>
           <li>
-            <%= link_to 'ユーザー一覧', admin_customers_path %>
+            <%= link_to 'ユーザー管理', admin_customers_path, class: "btn"  %>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, method: :delete do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: "btn"  do %>
               <i class="fas fa-sign-out-alt mr-2">ログアウト</i>
             <% end %>
           </li>
@@ -44,13 +44,13 @@
 
 
           <li class="nav-item mr-2">
-            <%= link_to '投稿一覧', post_images_path %>
+            <%= link_to '投稿一覧', post_images_path, class: "btn"  %>
           </li>
           <li class="nav-item mr-2">
-            <%= link_to 'マイページ', customer_path(current_customer.id) %>
+            <%= link_to 'マイページ', customer_path(current_customer.id), class: "btn"  %>
           </li>
           <li class="nav-item mr-2">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn"  %>
           </li>
 
 
@@ -79,9 +79,9 @@
           <li>
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
           </li>
-          
+
           <%= render 'public/searchs/form' %>
-          
+
           </div>
           <% end %>
 
@@ -89,14 +89,14 @@
         <% else %>
         <!--非ログイン時-->
         <div class="row">
-          <li>
-            <%= link_to "新規登録", new_customer_registration_path %>
+          <li class="nav-item mr-2">
+            <%= link_to "新規登録", new_customer_registration_path, class: "btn" %>
           </li>
-          <li>
-            <%= link_to "ログイン", new_customer_session_path %>
+          <li class="nav-item mr-2">
+            <%= link_to "ログイン", new_customer_session_path, class: "btn" %>
           </li>
-          <li>
-            <%= link_to "ゲストログイン", customers_guest_sign_in_path, method: :post %>
+          <li class="nav-item mr-2">
+            <%= link_to "ゲストログイン", customers_guest_sign_in_path, method: :post, class: "btn" %>
           </li>
         </div>
         <% end %>
