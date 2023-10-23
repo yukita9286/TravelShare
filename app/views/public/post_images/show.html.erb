@@ -3,38 +3,38 @@
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
 
-<h2 style="text-align: center">投稿詳細</h2>
-
-
-
-<div class="border rounded p-5", style="background-color: #a0d8ef;">
-  
-  <p>ユーザーネーム：<%= @post_image.customer.name %></p>
-  <p>投稿ユーザー画像：<%= image_tag @post_image.customer.get_profile_image(100,100) %></p>
-  
-  <%= image_tag @post_image.get_image %>
-  <p>タイトル：<%= @post_image.title %></p>
-  <p>内容：<%= @post_image.body %></p>
-  
-
-  
-
-  <p>投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-  <p>コメント数： <%= @post_image.post_comments.count %></p>
-  <div class=<%= "favorite-" + @post_image.id.to_s %> >
-  <p><%= render "public/favorites/btn", post_image: @post_image %></p>
-  </div>
-  
-  
-  <% if @post_image.customer == current_customer %>
-    <%= link_to "投稿を編集する", edit_post_image_path(@post_image.id), class: "btn btn-sm btn-secondary" %>
-    <%= link_to "投稿を削除する", post_image_path(@post_image), class: "btn btn-sm btn-danger", method: :delete %>
-  <% end %>
-  
-  <%= render "public/post_comments/index", post_image: @post_image %>
-  <%= render "public/post_comments/form", post_image: @post_image, post_comment: @post_comment %>
+      <h2 style="text-align: center">投稿詳細</h2>
       
-</div>
+      
+      
+      <div class="border rounded p-5", style="background-color: #a0d8ef;">
+        
+        <p>ユーザーネーム：<%= @post_image.customer.name %></p>
+        <p>投稿ユーザー画像：<%= image_tag @post_image.customer.get_profile_image(100,100) %></p>
+        
+        <%= image_tag @post_image.get_image %>
+        <p>タイトル：<%= @post_image.title %></p>
+        <p>内容：<%= @post_image.body %></p>
+        
+      
+        
+      
+        <p>投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+        <p>コメント数： <%= @post_image.post_comments.count %></p>
+        <div class=<%= "favorite-" + @post_image.id.to_s %> >
+        <p><%= render "public/favorites/btn", post_image: @post_image %></p>
+        </div>
+        
+        
+        <% if @post_image.customer == current_customer %>
+          <%= link_to "投稿を編集する", edit_post_image_path(@post_image.id), class: "btn btn-sm btn-secondary" %>
+          <%= link_to "投稿を削除する", post_image_path(@post_image), class: "btn btn-sm btn-danger", method: :delete %>
+        <% end %>
+        
+        <%= render "public/post_comments/index", post_image: @post_image %>
+        <%= render "public/post_comments/form", post_image: @post_image, post_comment: @post_comment %>
+            
+      </div>
 
 
     </div>

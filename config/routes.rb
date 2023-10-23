@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'homes/about'
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # 顧客用
 # URL /customers/sign_in ...
@@ -19,7 +16,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   root to: 'homes#top'
-  
+
 
   # ゲスト
   devise_scope :customer do
@@ -29,7 +26,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   # 会員
   scope module: :public do
-    
+
   get 'homes/about' => 'homes#about'
   get '/search', to: 'searchs#search'
   get 'customers/confirm' => "customers#confirm"
@@ -49,7 +46,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   resources :post_images, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
 
     resource :favorites, only: [:create, :destroy]
-    
+
     resources :post_comments, only: [:create, :destroy]
 
   end
@@ -60,6 +57,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   #管理者
   namespace :admin do
+
   root to: 'customers#index'
   patch 'customers/:id/out' => 'customers#out', as: 'customers_out'
   resources :customers, only: [:index, :show]

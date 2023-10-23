@@ -63,26 +63,28 @@
 
           <% else %>
           <!--通常のユーザーのヘッダー-->
-          <div class="row">
+          <div class="row mt-3">
           <li>
-            <%= link_to '投稿フォーム', new_post_image_path %>
+            <%= link_to '投稿フォーム', new_post_image_path, class: "btn"  %>
           </li>
           <li>
-            <%= link_to '投稿一覧', post_images_path %>
+            <%= link_to '投稿一覧', post_images_path, class: "btn"  %>
           </li>
           <li>
-            <%= link_to "いいね一覧", liked_posts_customer_path(current_customer) %>
+            <%= link_to "いいね一覧", liked_posts_customer_path(current_customer), class: "btn"  %>
           </li>
           <li>
-            <%= link_to 'マイページ', customer_path(current_customer.id) %>
+            <%= link_to 'マイページ', customer_path(current_customer.id), class: "btn"  %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn"  %>
           </li>
-
-          <%= render 'public/searchs/form' %>
-
           </div>
+          
+          <div style="margin: 0 0 0 auto;">
+          <%= render 'public/searchs/form' %>
+          </div>
+          <!--</div>-->
           <% end %>
 
 

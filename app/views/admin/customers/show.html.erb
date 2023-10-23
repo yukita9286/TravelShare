@@ -1,20 +1,44 @@
-<!-- ユーザーの詳細 -->
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
-<div>
-  <h3><%= @customer.name %></h3>
-  <%= image_tag @customer.get_profile_image(100,100) %>
-    <p><%= link_to "プロフィール編集", edit_customer_path %></p>
-  <%= link_to "アカウントを停止する(強制退会)", admin_customers_out_path, method: :patch, :class => "btn btn-danger ml-5", data: { confirm: "本当にアカウントを停止しますか？" }  %>
+
+      <!-- ユーザーの詳細 -->
+      <table class='table border rounded m-5 mx-auto', style="text-align: center">
+        <tr>
+          <th class="mx-auto"style="width: 150px;">
+            <%= image_tag @customer.get_profile_image(100, 100) %>
+            <h4>ユーザー名</h4>
+            <p><%= @customer.name %></p>
+          </th>
+        </tr>
+      </table>
+      
+      <!--<div style="text-align: center">-->
+      <!--  <%#= link_to "プロフィール編集", edit_customer_path, class: "btn btn-outline-secondary" %>-->
+      <!--</div>-->
+      <div style="text-align: center", class="mt-3">
+        <%= link_to "アカウントを停止する(強制退会)", admin_customers_out_path, method: :patch, :class => "btn btn-danger", data: { confirm: "本当にアカウントを停止しますか？" }  %>
+      </div>
+
+        <!-- ユーザーの投稿一覧 -->
+        <h2 style="margin-top: 50px; text-align: center">ユーザーの投稿</h2>
+        
+        <% @post_images.each do |post_image| %>
+        <div class="border rounded p-5 m-5", style="text-align: center; background-color: #a0d8ef;">
+          <%= link_to admin_post_image_path(post_image.id) do %>
+            <%= image_tag post_image.get_image , style: 'max-width: 300px; max-height:200px;' %>
+          <% end %>
+          <p>タイトル：<%= post_image.title %></p>
+          <p>内容：<%= post_image.body %></p>
+        </div>
+        <% end %>
+             <!--<div class="d-flex justify-content-center">-->
+             <!--   <%#= paginate @post_images %>-->
+             <!--</div>-->
+
+
+
+    </div>
+  </div>
 </div>
-
-<!-- ユーザーの投稿一覧 -->
-
-<% @post_images.each do |post_image| %>
-<div>
-  <%= link_to admin_post_image_path(post_image.id) do %>
-    <%= image_tag post_image.get_image %>
-  <% end %>
-  <p>タイトル：<%= post_image.title %></p>
-  <p>内容：<%= post_image.title %></p>
-</div>
-<% end %>
