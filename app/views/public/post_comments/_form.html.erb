@@ -3,10 +3,10 @@
 <% else %>
 
     <!--通常のユーザー-->
-    <div class="mt-5">
+    <div class="mt-5"style="text-align: center">
     <%= form_with model: [post_image, post_comment] do |f| %>
-      <%= f.text_area :comment, rows:'5', placeholder: "コメントする", class: "w-50" %>
-      <%= f.submit "送信" %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントする", class: "w-100" %>
+      <%= f.submit "送信", style: "width: 100px;" %>
     <% end %>
     </div>
 

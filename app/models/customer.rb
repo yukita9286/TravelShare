@@ -19,6 +19,8 @@ class Customer < ApplicationRecord
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
   
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  
   GUEST_CUSTOMER_EMAIL = "guest@example.com"
   
   def self.guest
