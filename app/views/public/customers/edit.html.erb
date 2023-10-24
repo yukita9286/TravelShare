@@ -5,13 +5,13 @@
 
 
       <h2 style="text-align: center">プロフィール編集</h2>
-      <div class="border border-primary rounded p-5 m-5", style="background-color: #a0d8ef; width: 500px;">
+      <div class="border rounded p-5 m-5", style="background-color: white; width: 500px;">
       <%= form_with model: @customer do |f| %>
         <h2>ユーザーネーム</h2>
         <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
         <h2 class="mt-5">プロフィール画像</h2>
         <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
-        <%= f.submit "変更を保存", class: "btn btn-success btn-sm btn-block mt-5" %>
+        <%= f.submit "変更を保存", class: "btn btn-secondary btn-sm btn-block mt-5" %>
       <% end %>
 
 

@@ -1,4 +1,5 @@
 class Public::SearchsController < ApplicationController
+  
   def search
     # viewのform_tagにて
     # 選択したmodelの値を@modelに代入。

@@ -3,7 +3,7 @@
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
         <% post_images.each do |post_image| %>
-        <div class="border rounded p-5 m-5", style="background-color: #a0d8ef;">
+        <div class="border rounded p-5 m-5", style="background-color: white;">
           <%= link_to post_image_path(post_image.id) do %>
             <%= image_tag post_image.get_image %>
           <% end %>
@@ -15,6 +15,7 @@
           </div>
         </div>
         <% end %>
+        
 
     </div>
   </div>
