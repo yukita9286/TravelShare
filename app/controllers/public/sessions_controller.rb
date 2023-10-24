@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   #before_action :configure_sign_in_params, only: [:create]
-  #before_action :customer_state, only: [:create]
+  before_action :customer_state, only: [:create]
  
   def after_sign_in_path_for(resource)
     homes_about_path
