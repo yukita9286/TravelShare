@@ -14,7 +14,9 @@
   <body>
       <header class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">
-          <span class="logo_text ml-3">Travel Share</span>
+          <span class="logo_text ml-3">
+            <i class="fa-regular fa-image"> Travel Share</i>
+          </span>
         </a>
           <ul class="navbar-nav ml-auto">
 
@@ -30,7 +32,7 @@
           </li>
           <li>
             <%= link_to destroy_admin_session_path, method: :delete, class: "btn"  do %>
-              <i class="fas fa-sign-out-alt mr-2">ログアウト</i>
+              <i class="fas fa-sign-out-alt mr-2"> ログアウト</i>
             <% end %>
           </li>
 
@@ -43,63 +45,91 @@
           <div class="row">
 
 
-          <li class="nav-item mr-2">
-            <%= link_to '投稿一覧', post_images_path, class: "btn"  %>
+          <li class="nav-item">
+            <%= link_to post_images_path, class: "btn" do  %>
+            <i class="fa-brands fa-stack-overflow fa-solid"> 投稿一覧</i>
+            <% end %>
           </li>
-          <li class="nav-item mr-2">
-            <%= link_to 'マイページ', customer_path(current_customer.id), class: "btn"  %>
+          <li class="nav-item">
+            <%= link_to customer_path(current_customer.id), class: "btn" do  %>
+            <i class="fa-solid fa-user"> マイページ</i>
+            <% end %>
           </li>
-          <li class="nav-item mr-2">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn"  %>
+          <li class="nav-item">
+            <%= link_to destroy_customer_session_path, method: :delete, class: "btn" do %>
+            <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
+            <% end %>
           </li>
 
-
-
+          <div class="mr-4">
            <%= render 'public/searchs/form' %>
-
+          </div>
 
 
           </div>
 
           <% else %>
           <!--通常のユーザーのヘッダー-->
-          <div class="row mt-3">
+          <div class="row">
           <li>
-            <%= link_to '投稿フォーム', new_post_image_path, class: "btn"  %>
+            <%= link_to new_post_image_path, class: "btn" do %>
+            <i class="fa-solid fa-plus"> 新規投稿</i>
+            <% end %>
           </li>
+
           <li>
-            <%= link_to '投稿一覧', post_images_path, class: "btn"  %>
+            <%= link_to post_images_path, class: "btn" do %>
+            <i class="fa-brands fa-stack-overflow fa-solid"> 投稿一覧</i>
+            <% end %>
           </li>
+
           <li>
-            <%= link_to "いいね一覧", liked_posts_customer_path(current_customer), class: "btn"  %>
+            <%= link_to liked_posts_customer_path(current_customer), class: "btn" do %>
+            <i class="fa-solid fa-heart"> いいね一覧</i>
+            <% end %>
           </li>
+
           <li>
-            <%= link_to 'マイページ', customer_path(current_customer.id), class: "btn"  %>
+            <%= link_to customer_path(current_customer.id), class: "btn" do %>
+            <i class="fa-solid fa-user"> マイページ</i>
+            <% end %>
           </li>
+
           <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn"  %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "btn" do %>
+            <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
+            <% end %>
           </li>
           </div>
-          
-          <div style="margin: 0 0 0 auto;">
+
+          <div style="margin: 0 0 0 200px;">
           <%= render 'public/searchs/form' %>
           </div>
-          <!--</div>-->
+
           <% end %>
 
 
         <% else %>
         <!--非ログイン時-->
         <div class="row">
-          <li class="nav-item mr-2">
-            <%= link_to "新規登録", new_customer_registration_path, class: "btn" %>
+          <li class="nav-item">
+            <%= link_to new_customer_registration_path, class: "btn" do %>
+            <i class="fa-solid fa-user-plus"> 新規登録</i>
+            <% end %>
           </li>
-          <li class="nav-item mr-2">
-            <%= link_to "ログイン", new_customer_session_path, class: "btn" %>
+
+          <li class="nav-item">
+            <%= link_to new_customer_session_path, class: "btn" do %>
+            <i class="fa-solid fa-right-to-bracket"> ログイン</i>
+            <% end %>
           </li>
-          <li class="nav-item mr-2">
-            <%= link_to "ゲストログイン", customers_guest_sign_in_path, method: :post, class: "btn" %>
+
+          <li class="nav-item">
+            <%= link_to customers_guest_sign_in_path, method: :post, class: "btn" do %>
+            <i class="fa-solid fa-user"> ゲストログイン</i>
+            <% end %>
           </li>
+
         </div>
         <% end %>
 

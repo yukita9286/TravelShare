@@ -47,10 +47,12 @@ class Public::PostImagesController < ApplicationController
   private
   
   def ensure_guest_customer
-   if current_customer.guest_customer?
-     redirect_to customer_path(current_customer), notice: "ゲストユーザーはプロフィール編集できません。"
-   end
+    if current_customer.guest_customer?
+      redirect_to customer_path(current_customer), notice: "ゲストユーザーはプロフィール編集できません。"
+    end
   end
+  
+  
 
   def post_image_params
     params.require(:post_image).permit(:title, :image, :body)

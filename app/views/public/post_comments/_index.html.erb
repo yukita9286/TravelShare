@@ -1,4 +1,5 @@
 <h2 class="mt-5", style="text-align: center">コメント</h2>
+
 <table>
   <thead>
     <% post_image.post_comments.each do |post_comment| %>
@@ -8,26 +9,24 @@
           <%= image_tag post_comment.customer.get_profile_image(100,100) %><br>
           <%= post_comment.customer.name %>
         <% end %>
-
       </th>
-      <th class="border border-dark" style="background-color: white; width: 350px; style: height: 50px;">
+      <th style="width: auto;" style: "height: 50px;">
         <%= post_comment.comment %>
       </th>
-      
-      <th>
-        
+    </tr>
+    <div style="margin-bottom: 20px;">
+    <tr>
+      <th colspan="3"> <!-- コメントの削除ボタンのセル -->
         <% if post_comment.customer == current_customer %>
           <%= link_to "コメントを削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
         <% end %>
-        
+
         <% if admin_signed_in? %>
           <%= link_to "コメントを削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
         <% end %>
-        
       </th>
-
     </tr>
+    </div>
     <% end %>
     </thead>
-
 </table>

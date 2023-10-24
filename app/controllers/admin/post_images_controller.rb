@@ -21,7 +21,7 @@ class Admin::PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     @post_image.update(post_image_params)
-    redirect_to admin_post_image_path(@post_image.id)
+    redirect_to admin_post_image_path(@post_image)
 
   end
 

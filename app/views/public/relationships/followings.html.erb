@@ -1,6 +1,6 @@
-<h2>Follow Users</h2>
+<h2 style="text-align: center; margin: 30px 0 30px 0;">フォローしているユーザー</h2>
 <% if @customers.exists? %>
   <%= render "public/customers/index", customers: @customers %>
 <% else %>
-  <p>ユーザーはいません</p>
+  <h4 style="text-align: center; margin: 30px 0 30px 0;">ユーザーはいません</h4>
 <% end %>
