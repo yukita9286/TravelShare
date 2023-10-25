@@ -5,7 +5,7 @@
 
   <!-- ユーザーの詳細 -->
   <!-- ゲストに閲覧制限 -->
-  <% if current_customer.guest_customer? %>
+  <% if current_admin || current_customer.guest_customer? %>
 
         <%= render "public/customers/guest", customer: @customer %>
             
@@ -31,7 +31,7 @@
         </tr>
       </table>
       
-      <% if current_customer.guest_customer? %>
+      <% if current_admin || current_customer.guest_customer? %>
       <% else %>
 
       <div style="text-align: center">

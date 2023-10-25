@@ -16,7 +16,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   root to: 'homes#top'
-  get '/search', to: 'searchs#search'
+  
 
 
   # ゲスト
@@ -29,6 +29,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
 
   get 'homes/about' => 'homes#about'
+  get '/search', to: 'searches#search'
   get 'customers/confirm' => "customers#confirm"
   patch 'customers/out' => "customers#out"
   resources :customers, only: [:index, :show, :edit, :update] do
@@ -57,7 +58,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   #管理者
   namespace :admin do
-
+    
+  get '/search', to: 'searches#search'
   root to: 'customers#index'
   patch 'customers/:id/out' => 'customers#out', as: 'customers_out'
   resources :customers, only: [:index, :show]

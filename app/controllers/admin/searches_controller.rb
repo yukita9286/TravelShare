@@ -1,4 +1,4 @@
-class SearchsController < ApplicationController
+class Admin::SearchesController < ApplicationController
   
   def search
     # viewのform_tagにて

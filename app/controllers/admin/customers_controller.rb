@@ -19,7 +19,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true) # または必要な更新処理を実行
     # reset_session
-    redirect_to root_path, notice: 'アカウントが停止しました'
+    redirect_to admin_post_imagespath, notice: 'アカウントが停止しました'
 
   end
   
