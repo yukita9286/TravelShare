@@ -1,5 +1,5 @@
 <!--ゲスト-->
-<% if current_customer.guest_customer? %>
+<% if current_admin || current_customer.guest_customer? %>
 
 
   <% if post_image.favorited_by?(current_customer) %>

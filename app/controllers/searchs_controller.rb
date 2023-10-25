@@ -1,4 +1,4 @@
-class Public::SearchsController < ApplicationController
+class SearchsController < ApplicationController
   
   def search
     # viewのform_tagにて
@@ -10,7 +10,23 @@ class Public::SearchsController < ApplicationController
     @content = params["content"]
     # @model, @content, @methodを代入した、
     # search_forを@recordsに代入。
+    
+    
+            # 検索ワードが空白でないことを確認
+    if @content.present?
+      @records = search_for(@model, @content, @method)
+    else
+      # 空白の場合は何も検索せず、適切なメッセージを設定
+      flash[:notice] = "検索ワードを入力してください。"
+      # 何もデータを表示しないようにする
+      @records = []
+    end
+    
     @records = search_for(@model, @content, @method)
+    
+    
+    @records = @records.page(params[:page]) # ページごとに表示
+    
   end
 
   private
