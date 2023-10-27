@@ -1,18 +1,15 @@
-<table>
-  <tbody>
-    <% post_image.post_comments.each do |post_comment| %>
-    <tr>
-      <td>
-        <%= link_to admin_customer_path(post_comment.customer) do %>
-          <%= image_tag post_comment.customer.get_profile_image(100,100) %><br>
-          <%= post_comment.customer.name %>
-        <% end %>
-      </td>
-      <td><%= post_comment.comment %></td>
-      <td>
-          <%= link_to "削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2 class="mt-5", style="text-align: center">コメント</h2>
+
+  <% post_image.post_comments.each do |post_comment| %>
+
+      <%= link_to customer_path(post_comment.customer) do %>
+        <h4><%= image_tag post_comment.customer.get_profile_image(50,50) %> <%= post_comment.customer.name %>
+      <% end %>さん</h4>
+
+        <p style="word-wrap: break-word;"><%= post_comment.comment %></p>
+        <!--`word-wrap: break-word;`をテキストを含む要素に適用すると、
+        テキストが要素の幅を超えた場合に自動的に折り返されます。-->
+
+        <p class="mb-5" style="text-align: center"><%= link_to "コメントを削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %></p>
+
+  <% end %>

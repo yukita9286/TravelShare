@@ -14,10 +14,4 @@
           <p class="mb-5" style="text-align: center"><%= link_to "コメントを削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %></p>
         <% end %>
 
-        <% if admin_signed_in? %>
-          <%= link_to "コメントを削除", post_image_post_comment_path(post_image, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
-        <% end %>
-
-
-
   <% end %>
