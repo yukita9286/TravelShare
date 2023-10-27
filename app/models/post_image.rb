@@ -4,8 +4,9 @@ class PostImage < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   
-  validates :title,presence:true
-  validates :body,presence:true,length:{maximum:200}
+  validates :title, presence: { message: "タイトルが入力されていません" }
+  validates :body, presence: { message: "内容が入力されていません" }, length: { maximum: 200, message: "エラーメッセージ" }
+  validates :image, presence: { message: "ファイルが未選択です" }
   
   has_one_attached :image
     

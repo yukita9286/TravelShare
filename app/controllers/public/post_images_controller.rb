@@ -1,4 +1,5 @@
 class Public::PostImagesController < ApplicationController
+  before_action :authenticate_customer!
   # ゲストを制限
   before_action :ensure_guest_customer, only: [:new, :create, :edit, :update, :destroy]
 
@@ -52,7 +53,7 @@ class Public::PostImagesController < ApplicationController
 
   def ensure_guest_customer
     if current_customer.guest_customer?
-      redirect_to customer_path(current_customer), notice: "ゲストユーザーはプロフィール編集できません。"
+      redirect_to customer_path(current_customer), notice: "ゲストユーザーはアクセスできません"
     end
   end
 

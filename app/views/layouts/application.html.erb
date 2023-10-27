@@ -147,7 +147,7 @@
 
   </header>
   
-            <!--バリデーションのメッセージ-->
+            <!--メッセージ-->
             <div class="container">
       		   <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
               <% flash.each do |key, value| %>
@@ -159,5 +159,6 @@
           </div>
       
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -1,25 +1,38 @@
 <div class="container">
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-
-
       <h2 style="text-align: center; margin-top: 30px;">投稿フォーム</h2>
-      
-      <div class="border rounded p-5 m-5", style="background-color: white; width: 500px;">
-      <%= form_with model: @post_image do |f| %>
-        <div>
-        <h4>画像</h4>
-        <%= f.file_field :image, accept: "image/*" %>
-        <h4 class="mt-5">タイトル</h4>
-        <%= f.text_field :title %>
-        <h4 class="mt-5">内容</h4>
-        <%= f.text_area :body %>
-        <%= f.submit '投稿' %>
-      <% end %>
-        </div>
+      <div class="border rounded p-5 m-5" style="background-color: white; width: 500px;">
+        <%= form_with(model: @post_image) do |f| %>
+          <div>
+            <h4>画像</h4>
+            <%= f.file_field :image, accept: "image/*" %>
+            <% if @post_image.errors.has_key?(:image) %>
+              <div class="mt-1 error-message alert alert-warning">
+                <%= @post_image.errors[:image].first %>
+              </div>
+            <% end %>
+
+            <h4 class="mt-5">タイトル</h4>
+            <%= f.text_field :title, size: 40, class: "form-control" %>
+            <% if @post_image.errors.has_key?(:title) %>
+              <div class="mt-1 error-message alert alert-warning">
+                <%= @post_image.errors[:title].first %>
+              </div>
+            <% end %>
+
+            <h4 class="mt-5">内容</h4>
+            <%= f.text_area :body, rows: 6, cols: 40, class: "form-control" %>
+            <% if @post_image.errors.has_key?(:body) %>
+              <div class="error-message alert alert-warning">
+                <%= @post_image.errors[:body].first %>
+              </div>
+            <% end %>
+
+            <%= f.submit '投稿', class: "mt-3" %>
+          </div>
+        <% end %>
       </div>
-
-
     </div>
   </div>
 </div>
