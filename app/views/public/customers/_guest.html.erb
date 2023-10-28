@@ -10,6 +10,9 @@
       </table>
       
       
+      <% if current_customer != @customer %>
+      <!-- 自分以外のユーザーの場合に表示するコンテンツ -->
+
         <h2 style="margin-top: 50px; text-align: center">ユーザーの投稿</h2>
     
         <% @post_images.each do |post_image| %>
@@ -24,3 +27,5 @@
              <div class="d-flex justify-content-center">
                 <%= paginate @post_images %>
              </div>
+             
+      <% end %>
