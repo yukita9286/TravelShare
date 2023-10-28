@@ -4,6 +4,7 @@ class Public::CustomersController < ApplicationController
   before_action :ensure_guest_customer, only: [:edit, :update, :confirm, :out, :liked_posts]
   
   def index
+    
   end
   
   def show
