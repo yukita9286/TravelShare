@@ -1,11 +1,22 @@
 # frozen_string_literal: true
 
 class Public::PasswordsController < Devise::PasswordsController
+    before_action :restrict_password_reset_access, only: [:new, :create, :edit, :update]
     before_action :ensure_normal_customer, only: :create
+    
+
 
   def ensure_normal_customer
     if params[:customer][:email].downcase == 'guest@example.com'
       redirect_to new_customer_session_path, alert: 'ゲストユーザーのパスワード再設定はできません。'
+    end
+  end
+  
+  def restrict_password_reset_access
+    if current_admin
+      # 管理者にはアクセスを許可する場合のロジック
+    else
+      redirect_to root_path, alert: "パスワードリセットにアクセスする権限がありません。"
     end
   end
   # GET /resource/password/new
