@@ -22,7 +22,7 @@ class Admin::CustomersController < ApplicationController
       redirect_to admin_customers_path, notice: 'ゲストユーザーは退会できません。'
     else
       @customer.update(is_deleted: true) # または必要な更新処理を実行
-      redirect_to admin_post_images_path, notice: 'アカウントが停止しました'
+      redirect_to admin_customers_path, notice: 'アカウントが停止しました'
     end
   end
 
