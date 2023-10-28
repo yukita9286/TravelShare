@@ -3,7 +3,7 @@
       <%= text_field_tag 'content' %>
       <%= submit_tag '検索' %>
       <br>
-      <%= select_tag 'model', options_for_select({ "ユーザー" => "customer", "投稿" => "post_image" }) %>
+      <%= select_tag 'model', options_for_select({ "ユーザー" => "customer", "投稿（タイトル）" => "post_image" }) %>
       <%= select_tag 'method', options_for_select({ "完全一致" => "perfect", "部分一致" => "partial" }) %>
       </br>
     <% end %>
