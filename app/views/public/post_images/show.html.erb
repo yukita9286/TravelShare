@@ -9,8 +9,11 @@
       
       <div class="border rounded p-5", style="background-color: #ffffff;">
         
-        <p>ユーザーネーム：<%= @post_image.customer.name %></p>
-        <p>投稿ユーザー画像：<%= image_tag @post_image.customer.get_profile_image(100,100) %></p>
+        <p>投稿したユーザー 
+        <%= link_to (@post_image.customer) do %>
+        <%= image_tag @post_image.customer.get_profile_image(100,100) %> <%= @post_image.customer.name %>
+        </p>
+        <% end %>
         
         <%= image_tag @post_image.get_image %>
         <p style="word-wrap: break-word;">タイトル：<%= @post_image.title %></p>
