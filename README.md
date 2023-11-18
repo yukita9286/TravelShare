@@ -16,7 +16,7 @@
 - 旅行者同士で旅先の情報を共有したい時
 ​
 ## 設計書
-後ほど記載予定
+![ER Diagram](Travel Share/PF_ER図.drawio.png)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
