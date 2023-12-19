@@ -18,7 +18,7 @@
 
         <td><%= customer.name %></td>
 
-        <!--ゲストユーザー-->
+        <!--ゲストユーザーの場合はフォローボタンを表示しない-->
         <% if current_admin || current_customer.guest_customer? %>
         <% else %>
         <td><%= render "public/relationships/btn", customer: customer %></td>
