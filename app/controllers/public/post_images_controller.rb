@@ -51,6 +51,7 @@ class Public::PostImagesController < ApplicationController
     # 投稿データのストロングパラメータ
   private
 
+    # ゲストは一部アクセスするとリダイレクト
   def ensure_guest_customer
     if current_customer.guest_customer?
       redirect_to customer_path(current_customer), notice: "ゲストユーザーはアクセスできません"
