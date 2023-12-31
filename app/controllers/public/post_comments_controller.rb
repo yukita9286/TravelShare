@@ -6,6 +6,7 @@ class Public::PostCommentsController < ApplicationController
     comment.post_image_id = post_image.id
     comment.save
     redirect_to request.referer
+    # 非同期通信化
   end
 
   def destroy
