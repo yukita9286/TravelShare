@@ -1,6 +1,8 @@
+<!--ユーザー検索-->
 <% if @model == 'customer' %>
   <h3 style="text-align: center">【検索結果】検索ワード：<%= @content %></h3>
   <%= render 'public/customers/index', customers: @records %>
+ <!--投稿検索-->
 <% else @model == 'post_image' %>
   <h3 style="text-align: center">【検索結果】検索ワード：<%= @content %></h3>
     <%= render 'public/post_images/index', post_images: @records %>
