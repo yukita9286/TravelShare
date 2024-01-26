@@ -26,7 +26,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   # 会員
-  scope module: :public do
+  scope module: :public do #URLにpublicを含まない
 
   get 'homes/about' => 'homes#about'
   get '/search', to: 'searches#search'
@@ -57,7 +57,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   #管理者
-  namespace :admin do
+  namespace :admin do #URLにadminを含む
     
   get '/search', to: 'searches#search'
   root to: 'customers#index'
