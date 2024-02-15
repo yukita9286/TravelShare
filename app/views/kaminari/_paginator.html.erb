@@ -8,7 +8,7 @@
 -%>
 <%= paginator.render do -%>
   <nav class="pagination" role="navigation" aria-label="pager">
-    <ul class="flex gap-x-1">
+    <ul class="flex gap-x-1"><!--ページネーションの文字サイズ変更-->
     <%= first_page_tag unless current_page.first? %>
     <%= prev_page_tag unless current_page.first? %>
     <% each_page do |page| -%>
