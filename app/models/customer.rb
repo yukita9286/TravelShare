@@ -18,7 +18,8 @@ class Customer < ApplicationRecord
 
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
-
+  
+  #文字制限　最小２、最大20字まで
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
 
