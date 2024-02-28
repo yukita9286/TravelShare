@@ -4,7 +4,7 @@ class PostImage < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   
-  validates :title, presence: { message: "タイトルが入力されていません" }      #文字数最大200文字
+  validates :title, presence: { message: "タイトルが入力されていません" }      #文字数最大200文字  #未入力の場合エラーメッセージを表示
   validates :body, presence: { message: "内容が入力されていません" }, length: { maximum: 200, message: "エラーメッセージ" }
   validates :image, presence: { message: "ファイルが未選択です" }
   
