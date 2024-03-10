@@ -57,7 +57,7 @@ class Customer < ApplicationRecord
   end
 
 
-  # プロフィール画像を取得
+  # プロフィール画像を取得 (画像がない場合はno_imageアイコンを使用)
   has_one_attached :profile_image
 
  def get_profile_image(width, height)
