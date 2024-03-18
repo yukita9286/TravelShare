@@ -2,6 +2,7 @@
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  # アクセス制限
   before_action :authenticate_admin!, except: [:top, :about]
   
   
