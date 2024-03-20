@@ -18,7 +18,7 @@ class Admin::CustomersController < ApplicationController
   def out
     @customer = Customer.find(params[:id])
 
-    if @customer.guest_customer?
+    if @customer.guest_customer?　　　　　# ゲストユーザーは退会できなよう設定
       redirect_to admin_customers_path, notice: 'ゲストユーザーは退会できません。'
     else
       @customer.update(is_deleted: true) # または必要な更新処理を実行
