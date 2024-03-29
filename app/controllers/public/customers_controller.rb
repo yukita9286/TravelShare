@@ -40,7 +40,8 @@ class Public::CustomersController < ApplicationController
 
 
   private
-
+  
+  # ゲストはアクセスできないよう設定
   def ensure_guest_customer
    if current_customer.guest_customer?
      redirect_to customer_path(current_customer), notice: "ゲストユーザーはアクセスできません"
