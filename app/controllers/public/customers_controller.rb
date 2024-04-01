@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-   # ゲストを制限
+  
   before_action :ensure_guest_customer, only: [:edit, :update, :confirm, :out, :liked_posts]
   
   def index
