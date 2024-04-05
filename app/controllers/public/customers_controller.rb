@@ -34,7 +34,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def liked_posts
-    @post_image = PostImage.new
+    @post_image = PostImage.new                             # ページを5に設定
     @liked_posts = PostImage.liked_posts(current_customer, params[:page], 5)
   end
 
